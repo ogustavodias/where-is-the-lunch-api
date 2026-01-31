@@ -24,4 +24,7 @@ public class Restaurant {
 
    @OneToMany(mappedBy = "restaurant")
    private List<Vote> votes;
+
+   @OneToMany(mappedBy = "winner")
+   private List<Survey> wins;
 }
