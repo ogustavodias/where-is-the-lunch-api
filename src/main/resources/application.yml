@@ -1,0 +1,21 @@
+server:
+   port: 8081
+spring:
+   application:
+      name: lunch
+   datasource:
+      url: jdbc:h2:mem:lunch_dev
+      driver-class-name: org.h2.Driver
+      username: admin
+      password: admin
+   jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+      show-sql: true
+      hibernate:
+         ddl-auto: update
+      properties:
+         hibernate:
+            format-sql: true
+   h2:
+      console:
+         enabled: true
