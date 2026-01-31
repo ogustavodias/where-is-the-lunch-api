@@ -14,7 +14,6 @@ import lombok.Data;
 @Entity
 @Table(name = "tb_votes", uniqueConstraints = { @UniqueConstraint(columnNames = { "survey_id", "participant_id" }) })
 public class Vote {
-
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
    private Long id;
