@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 class SurveyTest {
 
-   
    private Survey survey;
 
    @BeforeEach

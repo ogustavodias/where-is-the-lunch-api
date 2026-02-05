@@ -60,4 +60,10 @@ public class Survey {
 
       this.expiresAt = expirationDateTime.toInstant(ZoneOffset.UTC);
    }
+
+   public void closeWithWinner(Restaurant winner) {
+      this.winner = winner;
+      this.status = SurveyStatus.CLOSED;
+   }
+
 }
