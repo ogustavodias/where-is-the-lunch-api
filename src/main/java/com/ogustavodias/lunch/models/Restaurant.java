@@ -9,10 +9,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
 @Table(name = "tb_restaurants")
@@ -26,7 +30,4 @@ public class Restaurant {
 
    @OneToMany(mappedBy = "restaurant")
    private List<Vote> votes;
-
-   @OneToMany(mappedBy = "winner")
-   private List<Survey> wins;
 }
