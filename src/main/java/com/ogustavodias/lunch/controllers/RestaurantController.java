@@ -5,21 +5,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ogustavodias.lunch.models.Vote;
-import com.ogustavodias.lunch.services.VoteService;
+import com.ogustavodias.lunch.models.Restaurant;
+import com.ogustavodias.lunch.services.RestaurantService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("votes")
-public class VoteController {
+@RequestMapping("restaurants")
+public class RestaurantController {
 
-   private final VoteService service;
+   private final RestaurantService service;
 
    @GetMapping("/{id}")
-   public Vote searchVote(@PathVariable Long id) {
-      return service.searchVote(id);
+   public Restaurant searchParticipant(@PathVariable Long id) {
+      return service.findParticipant(id);
    }
 
 }

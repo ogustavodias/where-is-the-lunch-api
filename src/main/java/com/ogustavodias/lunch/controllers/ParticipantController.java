@@ -5,21 +5,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ogustavodias.lunch.models.Vote;
-import com.ogustavodias.lunch.services.VoteService;
+import com.ogustavodias.lunch.models.Participant;
+import com.ogustavodias.lunch.services.ParticipantService;
 
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("votes")
-public class VoteController {
+@RequestMapping("participants")
+public class ParticipantController {
 
-   private final VoteService service;
+   private final ParticipantService service;
 
    @GetMapping("/{id}")
-   public Vote searchVote(@PathVariable Long id) {
-      return service.searchVote(id);
+   public Participant searchParticipant(@PathVariable Long id) {
+      return service.findParticipant(id);
    }
 
 }
