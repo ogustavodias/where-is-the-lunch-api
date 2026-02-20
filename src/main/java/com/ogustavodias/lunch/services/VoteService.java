@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 public class VoteService {
 
    private final VoteRepository repository;
+   private final WinnerService winnerService;
 
    public Vote searchVote(Long id) {
       String notFoundMessage = String.format("Vote with id %s not found", id);
@@ -30,11 +31,17 @@ public class VoteService {
    }
 
    public Vote registerVote(Vote vote) {
-      if (isAfterNoon())
-         throw new NotPermittedException("Não é permitido votar após o horário do almoço");
+      /*
+       * if (isAfterNoon())
+       * throw new
+       * NotPermittedException("Não é permitido votar após o horário do almoço");
+       */
 
       if (hasVotedToday(vote.getParticipant()))
          throw new NotPermittedException("Não é permitido votar mais de uma vez ao dia");
+
+      if (winnerService.alreadyWonThisWeek(vote.getRestaurant(), LocalDate.now()))
+         throw new NotPermittedException("Não é permitido votar em um restaurante que já venceu na semana vigente");
 
       return repository.save(vote);
    }

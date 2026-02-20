@@ -14,7 +14,7 @@ public class RestaurantService {
 
    private final RestaurantRepository repository;
 
-   public Restaurant findParticipant(Long id) {
+   public Restaurant findRestaurant(Long id) {
       String notFoundMessage = String.format("Restaurant with id %s not found", id);
       return repository.findById(id).orElseThrow(() -> new EntityNotFoundException(notFoundMessage));
    }

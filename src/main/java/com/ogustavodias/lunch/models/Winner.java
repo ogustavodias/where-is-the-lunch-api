@@ -1,13 +1,14 @@
 package com.ogustavodias.lunch.models;
 
-import java.util.List;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,18 +20,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "tb_restaurants")
-public class Restaurant {
+@Table(name = "tb_winners")
+public class Winner {
+
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
    private Long id;
 
-   @Column(nullable = false)
-   private String name;
+   @ManyToOne(optional = false)
+   @JoinColumn(name = "winner_id")
+   private Restaurant winner;
 
-   @OneToMany(mappedBy = "restaurant")
-   private List<Vote> votes;
+   @Column(nullable = false, unique = true)
+   private LocalDate date;
 
-   @OneToMany(mappedBy = "winner")
-   private List<Winner> winnings;
 }
