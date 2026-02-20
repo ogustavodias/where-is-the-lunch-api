@@ -18,8 +18,8 @@ public class RestaurantController {
    private final RestaurantService service;
 
    @GetMapping("/{id}")
-   public Restaurant searchParticipant(@PathVariable Long id) {
-      return service.findParticipant(id);
+   public Restaurant searchRestaurant(@PathVariable Long id) {
+      return service.findRestaurant(id);
    }
 
 }
